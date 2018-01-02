@@ -1,0 +1,19 @@
+<!--index.html (prac6tv project)-->
+{% extends "base.html" %}
+{% block title %}friendslive{% endblock %}
+{% block tvname %}{{tv.name}}{% endblock %}
+{% block menu %}
+    <ul class='nav navbar-nav'>
+        <li class='active'><a href='/'>Home</a></li>
+        {% for t in tv_list %}
+            <li><a href='{% url 'tv-url' forloop.counter0 %}'>{{t.name}}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+{% block content %}
+    <div class='container'>
+        <div id='tvcode' align='center'>
+            <iframe height=498 width=880 src='http://player.youku.com/embed/{{tv.tvcode}}?autoplay=1' frameborder=0 'allowfullscreen'></iframe>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,29 @@
+<!--contact.html (ch08www project)-->
+{% extends "base.html" %}
+{% block title %}contact admin{% endblock %}
+{% block content %}
+<div class='container'>
+    {% if message %}
+        <div class="alert alert-warning">{{message}}</div>
+        {{user_name}}<br/>
+        {{user_city}}<br/>
+        {{user_school}}<br/>
+        {{user_email}}<br/>
+        {{user_message | linebreaks }}<br/>
+    {% endif %}
+    <div class='panel panel-primary'>
+            <div class='panel-heading'>
+                    <h3>write a mail for admin</h3>
+            </div>
+            <form name='my form' actoin='.' method=POST >
+                    {% csrf_token %}
+                    <div class='panel-body'>
+                        {{form.as_p}}
+                    </div>
+                    <div class='panel-footer'>
+                        <input type='submit' value="submit">
+                    </div>
+            </form>
+    </div>
+</div>
+{% endblock %}
